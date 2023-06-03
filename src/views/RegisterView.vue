@@ -18,8 +18,8 @@
              placeholder="Ingrese su Email"
              type="password">
     </div>
-    <button class="btn btn-primary mt-2" @clik="register">Log in</button>
-    <button class="btn btn-primary mt-2 ms-1" @clik="signInWithGoogle">Log in with Google</button>
+    <button type="submit" class="btn btn-primary mt-2" @click.prevent="registerUser">Register with Email</button>
+    <button type="submit" class="btn btn-primary mt-2 ms-1" @clik.prevent="signInWithGoogle">Log in with Google</button>
   </form>
 </template>
 
@@ -32,11 +32,9 @@ const email = ref( '' )
 const password = ref( '' )
 const router = useRouter()
 
-const register = () => {
+const registerUser = () => {
   createUserWithEmailAndPassword( getAuth(), email.value, password.value )
       .then( (data) => {
-        console.log('Registrado Correctamente')
-        console.log(data)
         router.push('/home')
       })
       .catch((error) => {

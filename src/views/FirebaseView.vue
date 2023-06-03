@@ -18,7 +18,7 @@
                placeholder="Ingrese su Email"
                type="password">
       </div>
-      <button type="submit" class="btn btn-primary mt-2" @clik.prevent="authUser">Log in</button>
+      <button type="submit" class="btn btn-primary mt-2" @click.prevent="authUser">Log in</button>
     </form>
   </div>
 </template>
@@ -31,6 +31,7 @@ let email = ref( '' )
 let password = ref( '' )
 
 const authUser = () => {
+  console.log('login')
   const auth = getAuth()
   signInWithEmailAndPassword( auth, email.value, password.value )
       .then( () => {
