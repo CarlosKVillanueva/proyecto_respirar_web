@@ -51,9 +51,6 @@ const registerUser = () => {
       } )
 }
 
-const signInWithGoogle = () => {
-
-}
 </script>
 
 <style lang="scss" scoped>

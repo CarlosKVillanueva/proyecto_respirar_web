@@ -35,7 +35,7 @@
             <span class="ps-2">Facebook</span>
           </button>
           <button class="btn btn-dark"
-                 @click.prevent="authGithub">
+                  @click.prevent="authGithub">
             <v-icon name="bi-github"/>
             <span class="ps-2">GitHub</span>
           </button>
@@ -47,73 +47,27 @@
 
 <script setup>
 import { ref } from 'vue'
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  GithubAuthProvider,
-  signInWithPopup
-} from 'firebase/auth'
+import useAuth from '@/stores/auth'
 
-const googleProvider = new GoogleAuthProvider()
-const facebookProvider = new FacebookAuthProvider()
-const githubProvider = new GithubAuthProvider()
-const auth = getAuth()
-
+const store = useAuth()
 let email = ref( '' )
 let password = ref( '' )
 
 const authFirebaseUser = () => {
-  console.log( 'login' )
-  signInWithEmailAndPassword( auth, email.value, password.value )
-      .then( () => {
-        alert( "Exito" )
-      } )
-      .catch( ( error ) => {
-        alert( "Error: " + error.message )
-      } )
+  store.loginUserWithMail( email, password )
 }
 
 const authGoogle = () => {
-  signInWithPopup( auth, googleProvider )
-      .then( ( result ) => {
-        const credential = GoogleAuthProvider.credentialFromResult( result )
-        const token = credential.accessToken
-        alert( 'Exito' )
-      } )
-      .catch( ( error ) => {
-        alert( 'Fail' )
-      } )
+  store.loginUserWithGoogle( email, password )
 }
 
 const authFacebook = () => {
-  signInWithPopup( auth, facebookProvider )
-      .then( ( result ) => {
-        const credential = FacebookAuthProvider.credentialFromResult( result )
-        const token = credential.accessToken
-        alert( 'Exito' )
-      } )
-      .catch( ( error ) => {
-        alert( 'Fail' )
-      } )
+  store.loginUserWithFacebook( email, password )
 }
 
 const authGithub = () => {
-  signInWithPopup( auth, githubProvider )
-      .then( ( result ) => {
-        const credential = GithubAuthProvider.credentialFromResult( result )
-        const token = credential.accessToken
-        alert( 'Exito' )
-      } )
-      .catch( ( error ) => {
-        alert( 'Fail' )
-      } )
+    store.loginUserWithGithub(email, password)
 }
-
-
-
-
 </script>
 
 <style lang="scss" scoped>

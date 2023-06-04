@@ -7,6 +7,7 @@ import router from './router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import { FcGoogle, CoFacebook, BiGithub } from "oh-vue-icons/icons";
 
@@ -22,12 +23,13 @@ const firebaseConfig = {
     measurementId: "G-LR5LMNMZJF"
 }
 
-addIcons(FcGoogle, CoFacebook, BiGithub);
+addIcons( FcGoogle, CoFacebook, BiGithub );
 
-initializeApp( firebaseConfig );
+initializeApp(firebaseConfig)
 
 const app = createApp( App )
+const pinia = createPinia()
 app.use( router )
-app.use( createPinia )
-app.component("v-icon", OhVueIcon);
-app.mount('#app')
+app.use( pinia )
+app.component( "v-icon", OhVueIcon );
+app.mount( '#app' )
