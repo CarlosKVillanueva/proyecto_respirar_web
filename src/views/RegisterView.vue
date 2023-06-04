@@ -33,22 +33,15 @@
 
 <script setup>
 import { ref } from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import useAuth from '@/stores/auth'
 
 const email = ref( '' )
 const password = ref( '' )
-const router = useRouter()
+const store = useAuth()
 
 const registerUser = () => {
-  createUserWithEmailAndPassword( getAuth(), email.value, password.value )
-      .then( ( data ) => {
-        router.push( '/home' )
-      } )
-      .catch( ( error ) => {
-        console.log( error.code, error.message )
-        alert( error.message )
-      } )
+  store.registerUserWithMail( email, password )
 }
 
 </script>

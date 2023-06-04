@@ -1,20 +1,29 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
 
 <template>
   <header>
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/login">Login</RouterLink>
-      <RouterLink to="/register">Register</RouterLink>
-      <RouterLink to="/Map">Map</RouterLink>
+      <div v-if="store.userLogged">
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/Map">Map</RouterLink>
+        <button class="btn btn-danger" @click="store.logoutUser">Log out</button>
+      </div>
+      <div v-else>
+        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/register">Register</RouterLink>
+      </div>
     </nav>
   </header>
 
   <RouterView/>
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import useAuth from '@/stores/auth'
+
+const store = useAuth()
+</script>
 
 <style scoped>
 header {

@@ -4,7 +4,10 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
-    FacebookAuthProvider, GithubAuthProvider
+    FacebookAuthProvider,
+    GithubAuthProvider,
+    createUserWithEmailAndPassword,
+    signOut
 } from 'firebase/auth'
 import router from '@/router'
 
@@ -15,7 +18,7 @@ const useAuth = defineStore(
         state: () => {
             return {
                 token: '',
-                user: undefined
+                user: null
             }
         },
         actions: {
@@ -33,6 +36,7 @@ const useAuth = defineStore(
                     const userCredential = await signInWithPopup( getAuth(), new GoogleAuthProvider() )
                     this.token = GoogleAuthProvider.credentialFromResult( userCredential ).accessToken
                     await router.push( '/map' )
+                    console.log(this.token)
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -53,10 +57,33 @@ const useAuth = defineStore(
                     await router.push( '/map' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
-                } finally {
-                    console.log( this.token )
                 }
+            },
+            async registerUserWithMail( email, password ) {
+                try {
+                    const { user } = await createUserWithEmailAndPassword( getAuth(), email.value, password.value )
+                    this.user = { user: user.email, uid: user.uid }
+                    await router.push( '/' )
+                } catch ( e ) {
+                    console.log( `Inicio de Sesion Fallido: ${ e }` )
+                }
+            },
+            async logoutUser() {
+                try {
+                    await signOut( getAuth() );
+                    this.user = null
+                    this.token = ''
+                    await router.push( "/login" );
+                } catch ( e ) {
+                    console.log( `Inicio de Sesion Fallido: ${ e }` )
+                }
+            },
+        },
+        getters: {
+            userLogged(state){
+                return state.token !== '' || state.user !== null
             }
+
         }
     }
 )
