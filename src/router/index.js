@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import FirebaseView from "@/views/FirebaseView.vue";
-import AboutView from "@/views/AboutView.vue";
-import RegisterView from '@/views/RegisterView.vue'
+import AboutView from '../views/AboutView.vue'
+import RegisterView from '../views/RegisterView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +18,9 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/firebase',
-      name: 'firebase',
-      component: FirebaseView
+      path: '/login',
+      name: 'login',
+      component: LoginView
     },
     {
       path: '/register',
