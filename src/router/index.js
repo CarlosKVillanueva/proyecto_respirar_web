@@ -56,7 +56,7 @@ const router = createRouter({
    const store = useAuth()
 
 
-   if ( to.meta.requireAuth && (store.user == null || store.token == null) ) {
+   if ( to.meta.requireAuth && !store.userLogged ) {
      next('login')
    } else {
      next()

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h4 class="text-center mt-3">Ingreso</h4>
     <form class="col-6 mx-auto">
       <div class="form-group">
         <label for="inputEmail">Email</label>

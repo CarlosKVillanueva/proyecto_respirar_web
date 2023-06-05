@@ -2,7 +2,7 @@
   <form>
     <div class="container">
       <div class="col-6 mx-auto">
-        <h3 class="text-center">Registro de Cuenta</h3>
+        <h4 class="text-center mt-3">Registro</h4>
         <div class="form-group">
           <label for="inputEmail">Email</label>
           <input type="email"

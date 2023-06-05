@@ -1,26 +1,10 @@
-
 <template>
-  <header>
-    <nav>
-      <div v-if="store.userLogged">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/Map">Map</RouterLink>
-        <button class="btn btn-danger" @click="store.logoutUser">Log out</button>
-      </div>
-      <div v-else>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/register">Register</RouterLink>
-      </div>
-    </nav>
-  </header>
-
-  <RouterView/>
+    <NavBar/>
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
 import useAuth from '@/stores/auth'
+import NavBar from '@/components/NavBar.vue'
 
 const store = useAuth()
 </script>
