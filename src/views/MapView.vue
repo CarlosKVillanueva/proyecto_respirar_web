@@ -1,48 +1,61 @@
 <template>
   <ol-map
-    :loadTilesWhileAnimating="true"
-    :loadTilesWhileInteracting="true"
-    style="height: 800px"
+      :loadTilesWhileAnimating="true"
+      :loadTilesWhileInteracting="true"
+      style="height: 800px"
   >
     <ol-view
-      ref="view"
-      :center="center"
-      :rotation="rotation"
-      :zoom="zoom"
-      :projection="projection"
-      @zoomChanged="zoomChanged"
+        ref="view"
+        :center="center"
+        :rotation="rotation"
+        :zoom="zoom"
+        :projection="projection"
+        @zoomChanged="zoomChanged"
     />
 
     <ol-tile-layer>
-      <ol-source-osm />
+      <ol-source-osm/>
     </ol-tile-layer>
 
-    <ol-overlay :position="[-58.46922428440172, -34.63851863589352]">
-      <template v-slot="slotProps">
-        <div class="overlay-content">
-          <v-icon v-show="currentZoom > 13" :scale="currentZoom / 4" animation="pulse" name="bi-geo-alt-fill"/>
-        </div>
-      </template>
-    </ol-overlay>
+    <div v-for="estacion in storeStations.$state.stations"
+         :key="estacion.id">
+      <ol-overlay :position="[estacion.location.value.coordinates[1], estacion.location.value.coordinates[0]]">
+        <template v-slot="slotProps">
+          <div class="overlay-content">
+            <router-link :to="{name: 'estacion', params: { id: estacion.id }}">
+              <v-icon :scale="currentZoom / 4" name="bi-geo-alt-fill"/>
+            </router-link>
+          </div>
+        </template>
+      </ol-overlay>
+    </div>
   </ol-map>
-          <span>{{ currentZoom }}</span>
+
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import useAuth from '@/stores/auth'
+import useStations from '@/stores/stations'
 
 const store = useAuth()
-const activeClass = ref('active')
+const storeStations = useStations()
+const activeClass = ref( 'active' )
 
-const center = ref([-58.43, -34.61]);
-const projection = ref("EPSG:4326");
-const zoom = ref(11.71);
-const rotation = ref(0);
 
-const currentZoom = ref(0);
+onMounted( async () => {
+  await storeStations.getStations()
+  // console.log( storeStations.$state.stations )
+} )
 
-const zoomChanged = (z) => {
+const center = ref( [ -62.69342, -38.40858 ] );
+const projection = ref( "EPSG:4326" );
+const zoom = ref( 4.9 );
+const rotation = ref( 0 );
+
+const currentZoom = ref( 0 );
+
+const zoomChanged = ( z ) => {
   currentZoom.value = z
 }
 </script>

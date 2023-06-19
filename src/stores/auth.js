@@ -26,7 +26,7 @@ const useAuth = defineStore(
                 try {
                     const { user } = await signInWithEmailAndPassword( getAuth(), email.value, password.value )
                     this.user = { email: user.email, uid: user.uid }
-                    await router.push( '/map' )
+                    await router.push( '/home' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -35,8 +35,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new GoogleAuthProvider() )
                     this.token = GoogleAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/map' )
-                    console.log(this.token)
+                    await router.push( '/home' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -45,7 +44,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new FacebookAuthProvider() )
                     this.token = FacebookAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/map' )
+                    await router.push( '/home' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -54,7 +53,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new GithubAuthProvider() )
                     this.token = GithubAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/map' )
+                    await router.push( '/home' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
