@@ -3,7 +3,7 @@
     <h4 class="text-center text-white mt-lg-5">Ingreso</h4>
     <form class="col-6 mx-auto">
       <div class="form-group">
-        <label class="text-white" for="inputEmail">Email</label>
+        <label class="text-white" for="inputEmail">Correo Electronico</label>
         <input type="email"
                class="form-control"
                id="inputEmail"
@@ -12,17 +12,17 @@
                v-model="email">
       </div>
       <div class="form-group">
-        <label class="text-white" for="inputPassword">Password</label>
+        <label class="text-white" for="inputPassword">Contraseña</label>
         <input id="inputPassword"
                v-model="password"
                class="form-control"
-               placeholder="Ingrese su Email"
+               placeholder="Ingrese su Contraseña"
                type="password">
       </div>
       <div class="d-grid gap-2 col-12 mx-auto mt-3">
         <button type="submit"
                 class="btn btn-primary"
-                @click.prevent="authFirebaseUser">Ingresar con Mail y Password
+                @click.prevent="authFirebaseUser">Ingresar
         </button>
         <div class="d-flex col-12 gap-2 justify-content-center">
           <button class="btn btn-outline-dark bg-dark-subtle"

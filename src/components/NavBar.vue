@@ -11,34 +11,34 @@
           <ul v-if="store.userLogged" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
-                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/">Inicio</RouterLink>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-                <RouterLink to="/about">About</RouterLink>
+                <RouterLink to="/about">Sobre Nosotros</RouterLink>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <RouterLink to="/map">Map</RouterLink>
+                <RouterLink to="/map">Mapa Estaciones</RouterLink>
               </a>
             </li>
           </ul>
           <ul v-else class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
-                <RouterLink to="/login">Login</RouterLink>
+                <RouterLink to="/login">Acceso</RouterLink>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
-                <RouterLink to="/register">Register</RouterLink>
+                <RouterLink to="/register">Registro</RouterLink>
               </a>
             </li>
           </ul>
           <form v-if="store.userLogged" class="d-flex" role="search">
-            <button class="btn btn-danger" @click="store.logoutUser" >Log out</button>
+            <button class="btn btn-danger" @click="store.logoutUser" >Cerrar Sesion</button>
           </form>
         </div>
       </div>

@@ -1,10 +1,10 @@
 <template>
   <form>
     <div class="container">
+      <h4 class="text-center text-white mt-lg-5">Registro</h4>
       <div class="col-6 mx-auto">
-        <h4 class="text-center text-white mt-lg-5">Registro</h4>
         <div class="form-group">
-          <label class="text-white" for="inputEmail">Email</label>
+          <label class="text-white" for="inputEmail">Correo Electronico</label>
           <input type="email"
                  class="form-control"
                  id="inputEmail"
@@ -13,7 +13,7 @@
                  v-model="email">
         </div>
         <div class="form-group">
-          <label class="text-white" for="inputPassword">Password</label>
+          <label class="text-white" for="inputPassword">Contraseña</label>
           <input id="inputPassword"
                  v-model="password"
                  class="form-control"
@@ -32,19 +32,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import useAuth from '@/stores/authStore'
 
-const email = ref( '' )
-const password = ref( '' )
+const email = ref('')
+const password = ref('')
 const store = useAuth()
 
 const registerUser = () => {
-  store.registerUserWithMail( email, password )
+  store.registerUserWithMail(email, password)
 }
 
 </script>
 
 <style lang="scss" scoped>
-
+.container {
+  margin-top: 100px;
+}
 </style>

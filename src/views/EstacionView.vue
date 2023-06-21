@@ -4,9 +4,9 @@
       <span><b>Air Qaulity Observer ID: </b> </span> {{ name }}
     </div>
     <div class="card-body mt">
-      <h5 class="card-title">Ultimos 10 registros historicos</h5>
-      <h6> Coordenadas Geograficas Estacion: {{ historicStore.location.coordinates[ 0 ] }},
-        {{ historicStore.location.coordinates[ 1 ] }}</h6>
+      <h6> Coordenadas Geograficas Estacion: {{ historicStore.location.coordinates[ 0 ] }}°,
+        {{ historicStore.location.coordinates[ 1 ] }}°</h6>
+      <h5 class="card-title mt-3">Ultimos 10 registros historicos</h5>
       <div class="container">
         <div class="row">
           <div class="col-sm">
@@ -49,7 +49,7 @@
     </div>
     <div class="card-footer text-white">
       <b>Direccion de la Estacion:</b> <br> {{ historicStore.address.address.streetAddress }}
-      <br> {{ historicStore.address.address.addressLocality }}
+      <br> {{ historicStore.address.address.addressRegion }}
       <br> {{ historicStore.address.address.addressRegion }}
     </div>
     <a>

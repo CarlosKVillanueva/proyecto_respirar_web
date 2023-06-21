@@ -38,7 +38,7 @@
               <div :class="{'station-hover': hovered }"
                    v-show="hovered && station.id === mouseOver"
               >
-                <span class="title_hover">Ultimos Registros </span> <br>
+                <span class="title_hover">Ultimo Registro </span> <br>
                 {{ station.address.value.address.streetAddress }}<br>
                 Temperatura: {{ station.temperature.value }} °C <br>
                 PM1: {{ station.pm1.value }}µm <br>
