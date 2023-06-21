@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const useHistoric = defineStore(
+const useHistoricStore = defineStore(
     'entity',
     {
         state: () => {
@@ -30,4 +30,4 @@ const useHistoric = defineStore(
     }
 )
 
-export default useHistoric
+export default useHistoricStore

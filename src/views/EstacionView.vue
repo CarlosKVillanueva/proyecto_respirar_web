@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-center mt-3">
+  <div class="card text-center bg-dark text-white margin">
     <div class="card-header">
       <span><b>Air Qaulity Observer ID: </b> </span> {{ name }}
     </div>
@@ -47,14 +47,14 @@
         </div>
       </div>
     </div>
-    <div class="card-footer text-body-secondary">
+    <div class="card-footer text-white">
       <b>Direccion de la Estacion:</b> <br> {{ historicStore.address.address.streetAddress }}
       <br> {{ historicStore.address.address.addressLocality }}
       <br> {{ historicStore.address.address.addressRegion }}
     </div>
     <a>
       <router-link :to="{name: 'map'}" class="btn btn-primary mt-3 mb-3">
-        Back to Map
+        Volver al Mapa
       </router-link>
     </a>
   </div>
@@ -62,7 +62,7 @@
 
 <script setup>
 import { onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
-import useHistoric from '@/stores/historic'
+import useHistoric from '@/stores/historicStore'
 import { useRoute } from 'vue-router'
 import exportFromJSON from 'export-from-json'
 
@@ -81,7 +81,7 @@ onBeforeMount( async () => {
 const exportCsv = async () => {
 
   const data = historicStore.historic
-  const fileName = `historicoEstacion${ name }`
+  const fileName = `historico_estacion_id_${ name }`
   const exportType = exportFromJSON.types.csv
   exportFromJSON( { data, fileName, exportType } )
 }
@@ -89,5 +89,7 @@ const exportCsv = async () => {
 </script>
 
 <style lang="scss" scoped>
-
+.margin {
+  margin-top: 80px;
+}
 </style>

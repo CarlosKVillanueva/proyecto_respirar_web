@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import useAuth from '@/stores/auth'
+import useAuth from '@/stores/authStore'
 import NavBar from '@/components/NavBar.vue'
 
 const store = useAuth()
@@ -16,7 +16,7 @@ header {
 }
 
 nav {
-  width: 100%;
+  width: 100vw;
   font-size: 20px;
   text-align: center;
   margin-top: 2rem;

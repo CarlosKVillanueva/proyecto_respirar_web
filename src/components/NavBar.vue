@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-xxl bg-dark bg-body-tertiary fixed-top px-5" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Respirar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import useAuth from '@/stores/auth'
+import useAuth from '@/stores/authStore'
 import { RouterLink, RouterView } from 'vue-router'
 
 const store = useAuth()

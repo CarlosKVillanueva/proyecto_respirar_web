@@ -12,7 +12,7 @@ import {
 import router from '@/router'
 
 
-const useAuth = defineStore(
+const useAuthStore = defineStore(
     'auth',
     {
         state: () => {
@@ -26,7 +26,7 @@ const useAuth = defineStore(
                 try {
                     const { user } = await signInWithEmailAndPassword( getAuth(), email.value, password.value )
                     this.user = { email: user.email, uid: user.uid }
-                    await router.push( '/home' )
+                    await router.push( '/' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -35,7 +35,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new GoogleAuthProvider() )
                     this.token = GoogleAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/home' )
+                    await router.push( '/' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -44,7 +44,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new FacebookAuthProvider() )
                     this.token = FacebookAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/home' )
+                    await router.push( '/' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -53,7 +53,7 @@ const useAuth = defineStore(
                 try {
                     const userCredential = await signInWithPopup( getAuth(), new GithubAuthProvider() )
                     this.token = GithubAuthProvider.credentialFromResult( userCredential ).accessToken
-                    await router.push( '/home' )
+                    await router.push( '/' )
                 } catch ( e ) {
                     console.log( `Inicio de Sesion Fallido: ${ e }` )
                 }
@@ -87,6 +87,6 @@ const useAuth = defineStore(
     }
 )
 
-export default useAuth
+export default useAuthStore
 
 

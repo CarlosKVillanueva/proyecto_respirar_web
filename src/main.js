@@ -9,7 +9,7 @@ import { createPinia } from 'pinia'
 
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { FcGoogle, CoFacebook, BiGithub, BiGeoAltFill   } from "oh-vue-icons/icons";
+import { FcGoogle, CoFacebook, BiGithub, BiGeoAltFill, FaSearchLocation  } from "oh-vue-icons/icons";
 
 import OpenLayersMap from "vue3-openlayers";
 import "vue3-openlayers/dist/vue3-openlayers.css";
@@ -26,7 +26,7 @@ const firebaseConfig = {
     measurementId: "G-LR5LMNMZJF"
 }
 
-addIcons( FcGoogle, CoFacebook, BiGithub, BiGeoAltFill  );
+addIcons( FcGoogle, CoFacebook, BiGithub, BiGeoAltFill, FaSearchLocation );
 
 initializeApp(firebaseConfig)
 

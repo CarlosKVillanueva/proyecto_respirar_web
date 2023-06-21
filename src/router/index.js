@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
-import useAuth from '@/stores/auth'
+import useAuth from '@/stores/authStore'
 import MapView from '@/views/MapView.vue'
 import EstacionView from '@/views/EstacionView.vue'
 
@@ -51,8 +51,8 @@ const router = createRouter( {
             }
         },
         {
-            path: '/estacion/:id',
-            name: 'estacion',
+            path: '/station/:id',
+            name: 'station',
             component: EstacionView,
             meta: {
                 requireAuth: true
@@ -63,10 +63,10 @@ const router = createRouter( {
 } )
 
 router.beforeEach( ( to, from, next ) => {
-    const store = useAuth()
+    const userStore = useAuth()
 
 
-    if ( to.meta.requireAuth && !store.userLogged ) {
+    if ( to.meta.requireAuth && !userStore.userLogged ) {
         next( 'login' )
     } else {
         next()
