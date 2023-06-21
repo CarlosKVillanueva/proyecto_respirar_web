@@ -47,27 +47,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import useAuth from '@/stores/authStore'
 
 const store = useAuth()
-let email = ref( '' )
-let password = ref( '' )
+let email = ref('')
+let password = ref('')
 
 const authFirebaseUser = () => {
-  store.loginUserWithMail( email, password )
+  store.loginUserWithMail(email, password)
 }
 
 const authGoogle = () => {
-  store.loginUserWithGoogle( email, password )
+  store.loginUserWithGoogle(email, password)
 }
 
 const authFacebook = () => {
-  store.loginUserWithFacebook( email, password )
+  store.loginUserWithFacebook(email, password)
 }
 
 const authGithub = () => {
-    store.loginUserWithGithub(email, password)
+  store.loginUserWithGithub(email, password)
 }
 </script>
 

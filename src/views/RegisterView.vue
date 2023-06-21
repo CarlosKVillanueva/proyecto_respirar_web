@@ -2,9 +2,9 @@
   <form>
     <div class="container">
       <div class="col-6 mx-auto">
-        <h4 class="text-center mt-3">Registro</h4>
+        <h4 class="text-center text-white mt-lg-5">Registro</h4>
         <div class="form-group">
-          <label for="inputEmail">Email</label>
+          <label class="text-white" for="inputEmail">Email</label>
           <input type="email"
                  class="form-control"
                  id="inputEmail"
@@ -13,7 +13,7 @@
                  v-model="email">
         </div>
         <div class="form-group">
-          <label for="inputPassword">Password</label>
+          <label class="text-white" for="inputPassword">Password</label>
           <input id="inputPassword"
                  v-model="password"
                  class="form-control"
