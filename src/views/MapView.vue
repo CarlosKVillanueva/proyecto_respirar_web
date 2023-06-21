@@ -57,7 +57,7 @@
           <div class="input-group">
             <input class="bcg-color form-control border-end-0 border text-white bg-dark rounded-pill" type="text" v-model="query"
                    @keyup="search()"
-                   placeholder="Buscar Estaciones">
+                   placeholder="Buscar Estaciones (ID o Ciudad)">
             <span class="input-group-append">
             <button class="bcg-color btn btn-outline-secondary bg-dark border-bottom-0 border rounded-pill ms-n5"
                     type="button"
@@ -155,7 +155,7 @@ input::placeholder {
 .wrapper {
   position: absolute;
   width: 100%;
-  top: 70px;
-  left: 0px;
+  top: 17px;
+  left:-50px;
 }
 </style>
